@@ -3,8 +3,8 @@
     <img [src]="book.image" />
     <div class="buttons" >
       <div >
-        <!-- <button href="https://www.gutenberg.org/files/2641/2641-0.zip">Download</button> -->
-        <button><a href="https://www.gutenberg.org/files/2641/2641-0.zip" target='_blank'>Download</a></button>`
+        <button (click)="goToLink(book.id)">Download</button>
+        <!-- <button><a href='book.download' target='_blank'>Download</a></button>` -->
 
 
       </div>

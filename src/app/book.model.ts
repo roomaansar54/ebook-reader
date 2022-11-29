@@ -1,4 +1,5 @@
 export interface IBook{
     image:string,
-    download:string
+    download:string,
+    id:number
 }
