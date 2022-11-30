@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 // import { Book } from './book.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,19 @@ export class BookService {
     return this.http.get('https://gutendex.com/books')
   }
   getByID(id:number){
-    return this.http.get('https://gutendex.com/books/'+id)
-
+    return this.http.get('https://gutendex.com/books/'+id)    
+    
   }
+
+  search(name:string){
+    return this.http.get('https://gutendex.com/books?search='+name)
+  }
+ 
+
+
+
+  
+  
 
   // https://www.gutenberg.org/cache/epub/2641/pg2641.cover.medium.jpg
 

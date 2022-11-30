@@ -1,0 +1,28 @@
+<app-book-search></app-book-search>
+
+<!-- <button (click)="open()">Search</button> -->
+
+<div class="grid">
+
+    <div *ngFor="let book of books">
+      <img [src]="book.image" />
+      <div class="buttons" >
+        <div >
+          <button (click)="goToLink(book.id)">Download</button>
+        </div>
+          <button routerLink="/book/{{book.id}}">Read Book</button>
+  
+      </div>
+    
+    
+    
+    </div>
+  
+  </div>
+  <!-- boookkss
+
+  <div *ngFor="let result of results">
+
+    {{result}}
+
+  </div> -->

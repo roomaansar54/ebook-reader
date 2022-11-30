@@ -1,0 +1,9 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 150px) ;
+    gap:80px;
+
+    /* search/?query=Blake&submit_search=Go%21&start_index=26 */
+    justify-content:center;
+    column-rule: 10px solid #302d18;
+  }

@@ -2,5 +2,18 @@
     display: grid;
     grid-template-columns: repeat(4, 150px) ;
     gap:80px;
+
+    /* search/?query=Blake&submit_search=Go%21&start_index=26 */
     justify-content:center;
+    column-rule: 10px solid #302d18;
   }
+
+  /* .grid {
+    display: block;
+    margin: 3em 0.5em 0 0.5em;
+    list-style-type: none;
+    padding-left: 0;
+    column-width: 20em;
+    column-gap: 1em;
+    column-rule: 4px solid #cfcaaf;
+    } */

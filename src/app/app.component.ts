@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(private _service:BookService){}
 
   ngOnInit(){
-this.getData()
+// this.getData()
   }
   getData(){
     // this._service.get()
@@ -42,8 +42,8 @@ this.getData()
         .subscribe(data=>{
           this.singleIdData=data
           this.book.push({"id":this.singleIdData["id"],"image":this.singleIdData["formats"]["image/jpeg"],"download":this.singleIdData["formats"]["application/octet-stream"]})
-          console.log(this.book)
-          console.log(this.book[0].download)
+          // console.log(this.book)
+          // console.log(this.book[0].download)
           // this.images.push(this.singleIdData["formats"]["image/jpeg"])
           // this.downloads.push(this.singleIdData["formats"]["application/octet-stream"])
           // console.log(this.images)

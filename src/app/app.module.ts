@@ -5,17 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import  {HttpClientModule} from '@angular/common/http';
+import { BookSearchComponent } from './book-search/book-search.component';
+import { BooksComponent } from './books/books.component';
+import { BooksearchDialogComponent } from './booksearch-dialog/booksearch-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent
+    BookComponent,
+    BookSearchComponent,
+    BooksComponent,
+    BooksearchDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
