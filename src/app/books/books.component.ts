@@ -28,7 +28,13 @@ export class BooksComponent implements OnInit {
       this.completeData=data
       this.results = this.completeData["results"] // var id=0
       for (let result of this.completeData["results"]){
-        this.books.push({"id":result["id"],"download":result["formats"]["text/html"],"image":result["formats"]["image/jpeg"]})
+        this.books.push({
+          "id":result["id"],
+        "download":result["formats"]["text/html"],
+        "image":result["formats"]["image/jpeg"],
+        "author":this.results["author"]
+      
+      })
 
         
         // id = id + 1

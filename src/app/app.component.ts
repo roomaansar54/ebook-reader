@@ -41,7 +41,7 @@ export class AppComponent {
         this._service.getByID(id)
         .subscribe(data=>{
           this.singleIdData=data
-          this.book.push({"id":this.singleIdData["id"],"image":this.singleIdData["formats"]["image/jpeg"],"download":this.singleIdData["formats"]["application/octet-stream"]})
+          this.book.push({"id":this.singleIdData["id"],"image":this.singleIdData["formats"]["image/jpeg"],"download":this.singleIdData["formats"]["application/octet-stream"],"author":this.singleIdData["author"]})
           // console.log(this.book)
           // console.log(this.book[0].download)
           // this.images.push(this.singleIdData["formats"]["image/jpeg"])

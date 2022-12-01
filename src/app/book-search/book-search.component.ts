@@ -9,32 +9,59 @@ import { IBook } from '../book.model';
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit {
+[x: string]: any;
   completeData: any;
   results: any;
+  nothing: boolean = false ;
+  books:Array<IBook>=[]
+
 
 
   constructor(private bookService:BookService) { }
 
+  search: string =""
+
   ngOnInit(): void {
+    this.searchBA()
   }
 
-
-  search(term: string): void {
-    this.bookService.search(term).subscribe(
+// search books and authors
+  searchBA(): void {
+    this.completeData=[]
+    this.books=[]
+    this.nothing=false
+    this.bookService.search(this.search).subscribe(
       data =>{
-        if (term.length === 0){
-          this.results=[]
-          this.completeData=[]
-        }
-        else{
-          this.completeData = data 
-          this.results=this.completeData["results"]
-          console.log(this.completeData)
+        // empty the search results
+        // if (this.search.length === 0){
+        //   this.results=[]
+        //   this.completeData=[]
+        // }
+        // else{
+          this.completeData = data
+          for (let result of this.completeData["results"]){
+            this.books.push({
+            "id":result["id"],"download":result["formats"]["text/html"],
+            "image":result["formats"]["image/jpeg"],
+            "author":result["authors"][0].name
+          })    
+          }
+          if (this.books.length === 0){
+            this.nothing = true
+          }
   
-        }
+          console.log(this.books)
+  
+        // }
       })
     }
+    downloadLink(id:number){
+      window.open("https://www.gutenberg.org/files/"+id+"/"+id+"-0.zip", "_blank");
   }
+
+    
+  
+}
 
 
 

@@ -7,8 +7,9 @@ import { BookComponent } from './book/book.component';
 import  {HttpClientModule} from '@angular/common/http';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { BooksComponent } from './books/books.component';
-import { BooksearchDialogComponent } from './booksearch-dialog/booksearch-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+// import { AngularEpubViewerModule } from 'angular-epub-viewer';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BookComponent,
     BookSearchComponent,
     BooksComponent,
-    BooksearchDialogComponent,
+    
     
   ],
   imports: [
@@ -25,6 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
+    
     
   ],
   providers: [],

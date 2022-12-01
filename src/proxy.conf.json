@@ -1,0 +1,7 @@
+{
+    "/files": {
+      "target": "https://www.gutenberg.org/",
+      "secure": true,
+      "changeOrigin":true
+    }
+  }

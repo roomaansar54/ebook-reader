@@ -15,10 +15,8 @@ export class BookComponent implements OnInit {
   b!:IBook ;
   book:Array<IBook>=[];
   iddd!: number;
-  image!:string;
-  books$:any;
-  errorMsg!: string;
   errorMessage: any;
+  raw: any;
 
   // book: IBook | undefined
 
@@ -41,8 +39,14 @@ export class BookComponent implements OnInit {
     this.bookService.getByID(id)
       .subscribe((data) => {
         this.bookData = data;
+        this.bookService.getText((this.bookData["formats"]["text/plain; charset=us-ascii"].split(".org"))[1]).subscribe(
+          data=>{
+             this.raw = data;
+             console.log(this.raw)
+          }
+        )
         this.iddd=this.bookData["id"];
-        this.book.push({"id":this.bookData["id"],"image":this.bookData["formats"]["image/jpeg"],"download":this.bookData["formats"]["text/html"] })
+        this.book.push({"id":this.bookData["id"],"image":this.bookData["formats"]["image/jpeg"],"download":this.bookData["formats"]["text/html"],"author":this.bookData["author"] })
         console.log(this.iddd)
         // this.book.id = this.bookData["id"]
       },

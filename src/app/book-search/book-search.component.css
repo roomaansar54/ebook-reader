@@ -1,58 +1,154 @@
-/* HeroSearch private styles */
 
-label {
-    display: block;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  input {
-    padding: 0.5rem;
-    width: 100%;
+.seacrh-box{
+    /* width: 100%; */
+    padding: 25px;
+    /* background-color: #a1833b !important; */
+    margin-bottom: 30px;
+}
+.search{
+    display: flex;
+    border: 1px solid #a1833b;
+    border-radius: 20px;
+    width: 50%;
     margin:auto;
-    max-width: 600px;
+    justify-content: center;
+    /* padding: 10px; */
+    /* padding: 0.5rem;
+    width: 500px;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif; */
+
+
+}
+
+  input {
+    padding: 20px;
+    width: 90%;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
     display: block;
+    background-color: transparent;
+    border-right: 2px solid #a1833b;
+    border-top: none;
+    border-left:none;
+    border-bottom: none;
   }
+  ::placeholder {
+    color: rgb(82, 56, 6) !important;
+    opacity: 0.5; /* Firefox */
+  }
+  .search-button{
+
+    background-color: transparent;
+    color: white;
+    background-color: #a1833b;
+
+    font-size: 16px;
+    /* background-color: transparent; */
+    border: none;
+    cursor: pointer;
+    padding: 20px 20px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 0px 18px 18px 0px;
+
+
+  }
+  .search-button:hover{
+    background-color: rgb(82, 56, 6);
+    object-fit: fill;
+    color: white;
+
+  }
+  /* .search-button:focus{
+    background-color: rgb(82, 56, 6);
+    color: white;
+  } */
+
   
   input:focus {
-    outline: #336699 auto 1px;
+    /* outline: #336699 auto 1px; */
+        outline: none;
+        background-color: transparent;
+
   }
-  
-  li {
-    list-style-type: none;
-    text-align: left;
-  }
-  .search-result li a {
-    border-bottom: 1px solid gray;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    display: inline-block;
-    width: 100%;
-    max-width: 600px;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .search-result li a:hover {
-    background-color: #435a60;
-    color: white;
-  }
-  
-  ul.search-result {
-    margin-top: 0;
-    padding-left: 0;
+  .no-book{
+    width: 700px;
+    height: 200px;
+    border: 1px solid rgb(82, 56, 6);
+    display: flex;
+    justify-content: center;
     margin: auto;
-    width: 100%;
-    max-width: 600px;
+  }
+  .no-book p{
+    justify-content: center;
+    
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 150px) ;
+    gap:80px;
+    justify-content:center;
+    column-rule: 10px solid #302d18;
+    padding-bottom: 30px;
+
+  }
+  .book{
+    position: relative;
+    width: 200px;
+    /* height: 30px; */
+    border-radius: 10px;
+    box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
+    transform-style: preserve-3d; 
+    -webkit-transition: transform 0.6s ease-in-out; /* Safari and Chrome */
+    transition: transform  0.6s ease-in-out;
+}
+
+img {
+    width: 200px;
+    height: 250px;
+    object-fit:fill;
+    border-radius: 10px;
+}  
+.book-author{
+    height: 30px;
+    padding: 14px;
+    margin: 0px;
+    color: saddlebrown;}
+.book-buttons{
+    padding: 10px;
+    /* background-color: #a1833b !important; */
+    margin-bottom: 10px;
+    display: flex;
+}
+.book-buttons button {
+    color: rgb(233, 217, 217);
+    background-color: #a1833b !important;
+    border: none;
+    cursor: pointer;
+    padding: 10px 9px;
+    margin: 0.5px;
+    border: 1px solid a1833b;
+    border-radius: 5px;
+    font-family: "Montserrat", sans-serif;
+
+}
+.go-to-search{
+    display: flex;
+    justify-content: center;
+    background-color: #a1833b;
+    width:50%;
+    margin:auto;
+    padding: 20px;
+    color: rgb(233, 217, 217);
+
+
+}
+
+  @media (max-width: 600px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 150px);
+    }
   }
   
-  /*
-  Copyright Google LLC. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at https://angular.io/license
-  */
   

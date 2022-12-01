@@ -1,13 +1,31 @@
-<p>book-search works!</p>
-<div id="search-component">
-  <label for="search-box">Hero Search</label>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div class="search-component">
+    <div class="seacrh-box">
+        <div class="search">
+            <input #searchBox id="search-box" [(ngModel)]="search" placeholder="Search books by title or author name" />
+            <button class="search-button" (click)="searchBA()">Search</button>
+        </div>
 
-  <ul class="search-result">
-    <li *ngFor="let book of results   " >
-      <a routerLink="/book/{{book.id}}">
-        {{book["title"]}}
-      </a>
-    </li>
-  </ul>
+
+    </div>
+    <div class="no-book" *ngIf="nothing === true">
+        <p >No Books Found!!</p>
+
+    </div>
+
+    <div class="book-grid">
+        <div class="book" *ngFor="let book of books">
+            <img [src]="book.image" />
+            <p class="book-author">By: {{book.author}}</p>
+            <div class="book-buttons">
+                <button (click)="downloadLink(book.id)">Download</button>
+                <button routerLink="/book/{{book.id}}">Read Now</button>
+
+            </div>
+            <!-- <a routerLink="/book/{{book.id}}">
+                {{book["title"]}}
+            </a> -->
+        </div>
+    </div>
+    <div class="go-to-search">Not got what you wanted. Try searching the book in the search box</div>
+
 </div>
