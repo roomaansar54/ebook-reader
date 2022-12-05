@@ -26,6 +26,12 @@ export class BookService {
   // getText(){
   //   return this.http.get('https://www.gutenberg.org/files/'+2641+'/'+2641+'-0.txt',{ responseType: 'text'});
   // }
+  // https://www.gutenberg.org/ebooks/6130.html.images
+  // https://www.gutenberg.org/ebooks/2.txt.utf-8
+  // https://www.gutenberg.org/files/37106/37106.txt
+  // getText(id:number){
+  //   return this.http.get('/files/'+id+'/'+id+'-0.txt',{ responseType: 'text'});
+  // }
   getText(url:string){
     return this.http.get(url,{ responseType: 'text'});
   }

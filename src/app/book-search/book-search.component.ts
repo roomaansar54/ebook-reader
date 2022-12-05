@@ -43,14 +43,15 @@ export class BookSearchComponent implements OnInit {
             this.books.push({
             "id":result["id"],"download":result["formats"]["text/html"],
             "image":result["formats"]["image/jpeg"],
-            "author":result["authors"][0].name
+            "author":result["authors"][0].name,
+            "title": result["title"]
           })    
           }
           if (this.books.length === 0){
             this.nothing = true
           }
   
-          console.log(this.books)
+          // console.log(this.books)
   
         // }
       })

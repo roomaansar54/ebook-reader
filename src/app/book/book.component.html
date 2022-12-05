@@ -1,5 +1,27 @@
-<p>book works!</p>
-<textarea rows="30" cols="50">{{raw}}</textarea>
-<p *ngIf="errorMessage">{{errorMessage}}</p>
-<!-- <button (click)="goBack()"></button> -->
+<div class="font-buttons">
+<h3 class="inline-display">Select Font Size: </h3>
+<button class="normal inline-display" (click)="normalFont()">Aa</button>
+<button class="large" (click)="largeFont()">Aa</button>
+<button class="largest" (click)="largestFont()">Aa</button>
+</div>
 
+<div class="search-input">
+    <!-- <label for="">Search here: </label> -->
+    <input [(ngModel)]="searchText" type="search" placeholder="Search book text here" (input)="countMatches(searchText)" />
+    <p *ngIf="appearCount">{{count}} match results<p>
+
+</div>
+<!-- <div
+    class="text-contaniner"
+    [innerHtml]="raw | highlight: searchText"
+  ></div> -->
+<div class="text-container" >
+    <h1 *ngIf="isError === true"> {{errorMessage}}</h1>
+
+    <h1>{{bookData.title}}</h1>
+    <div *ngFor="let i of raw" >
+        <div [innerHtml]="i | highlight: searchText" class="book">{{i}}</div>
+    </div>
+</div>
+<!-- <textarea id="book" [innerHtml]="raw | highlight: searchText" readonly></textarea> -->
+<!-- <button (click)="goBack()"></button> -->

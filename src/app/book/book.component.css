@@ -1,0 +1,163 @@
+.largestFont{
+    font-size: 40px !important;
+}
+.largeFont{
+    font-size: 30px !important;
+
+}
+.normalFont{
+    font-size: 23px !important;
+}
+.book{
+line-height: 45px;
+}
+.search-input{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    /* align-items: center; */
+    width: 30%;
+    border: 2px solid #a1833b;
+    border-radius: 30px;
+    margin-bottom: 20px;
+
+
+}
+input {
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+    font-size:19px ;
+    font-family: "Montserrat", sans-serif;
+    display: block;
+    background-color: transparent;
+    /* border: 2px solid #a1833b; */
+    border-radius: 30px;
+    border: none;
+  }
+  input:focus{
+    outline: none;
+  }
+
+  ::placeholder {
+    color: rgb(82, 56, 6) !important;
+    opacity: 0.8; /* Firefox */
+    font-size: 19px;
+    text-align: center;
+  }
+.text-container{
+    overflow: auto;
+    box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
+    margin: auto;
+    height: 50%;
+    /* line-height:20px ; */
+    padding: 50px;
+    width: 80%;
+    /* justify-content: center; */
+    /* font-weight:bolder; */
+    font-size: 23px !important;
+    /* font-family: 'Libre Baskerville', serif; */
+    background: url("https://i.imgur.com/0kjMcUe.png");
+    background-color: #8a6b25;
+    filter: brightness(0.95) sepia(40%) saturate(80%);
+    color: #826520;
+    font-family: 'Josefin Slab', serif;
+    border-radius: 30px;
+    margin-bottom: 100px !important;
+    /* border-style: url("https://i.imgur.com/0kjMcUe.png"); */
+    clip-path: polygon(
+		0% 0%,
+		0% 93%,
+		5% 98%,
+		6% 99%,
+		8% 95%,
+		12% 94%,
+		15% 97%,
+		17% 93%,
+		20% 98%,
+		22% 97%,
+		25% 99%,
+		31% 94%,
+		35% 93%,
+		39% 96%,
+		43% 93%,
+		45% 94%,
+		47% 95%,
+		50% 92%,
+		52% 96%,
+		54% 93%,
+		58% 92%,
+		60% 95%,
+		62% 93%,
+		65% 96%,
+		69% 93%,
+		72% 93%,
+		75% 94%,
+		79% 97%,
+		81% 94%,
+		85% 93%,
+		88% 92%,
+		90% 95%,
+		93% 93%,
+		95% 92%,
+		97% 95%,
+		100% 97%,
+		100% 0%
+	);
+
+}
+.text-container div{
+    text-align: justify;
+    
+}
+.font-buttons{
+    text-align: center;
+}
+.largest , .normal , .large{
+    color: black;
+    border: none;
+    background-color: transparent;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+.normal{
+    font-size: 23px !important;
+}
+.large{
+    font-size: 30px !important;
+
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background: #d7bf86;
+	background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+}
+
+::-webkit-scrollbar-thumb {
+	background: #d7bf86;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #8a6b25;
+}
+
+@media (min-width: 1200px) {
+    .text-container{
+        height: 55% ;
+    }
+  }
+  @media (min-width: 1600px) {
+    .text-container{
+        height: 65% ;
+    }
+  }
+
+  .inline-display{
+    display: inline;
+  }

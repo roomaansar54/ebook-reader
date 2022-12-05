@@ -9,7 +9,7 @@
     display: flex;
     border: 1px solid #a1833b;
     border-radius: 20px;
-    width: 50%;
+    width: 40%;
     margin:auto;
     justify-content: center;
     /* padding: 10px; */
@@ -120,6 +120,7 @@ img {
     /* background-color: #a1833b !important; */
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
 }
 .book-buttons button {
     color: rgb(233, 217, 217);
@@ -150,5 +151,7 @@ img {
       grid-template-columns: repeat(2, 150px);
     }
   }
+
+  /* color option */
   
   

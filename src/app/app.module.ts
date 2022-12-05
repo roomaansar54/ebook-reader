@@ -9,6 +9,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
 import { BooksComponent } from './books/books.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { HighlightPipe } from './highlight.pipe';
 // import { AngularEpubViewerModule } from 'angular-epub-viewer';
 
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     BookComponent,
     BookSearchComponent,
     BooksComponent,
+    HighlightPipe,
     
     
   ],

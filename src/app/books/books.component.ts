@@ -32,7 +32,8 @@ export class BooksComponent implements OnInit {
           "id":result["id"],
         "download":result["formats"]["text/html"],
         "image":result["formats"]["image/jpeg"],
-        "author":this.results["author"]
+        "author":this.results["author"],
+        "title": this.results["title"]
       
       })
 
