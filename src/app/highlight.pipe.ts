@@ -10,9 +10,7 @@ export class HighlightPipe implements PipeTransform {
         return wholeText;
       }
       const re = new RegExp(searchQuery, 'gi');
-      return wholeText.replace(re, '<mark>$&</mark>');
+      return wholeText.replace(re, '<mark id="1">$&</mark>');
+
     }
-
-  
-
 }

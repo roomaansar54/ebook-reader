@@ -65,7 +65,7 @@ input {
     border-radius: 30px;
     margin-bottom: 100px !important;
     /* border-style: url("https://i.imgur.com/0kjMcUe.png"); */
-    clip-path: polygon(
+    /* clip-path: polygon(
 		0% 0%,
 		0% 93%,
 		5% 98%,
@@ -103,7 +103,7 @@ input {
 		97% 95%,
 		100% 97%,
 		100% 0%
-	);
+	); */
 
 }
 .text-container div{
@@ -160,4 +160,8 @@ input {
 
   .inline-display{
     display: inline;
+  }
+
+  .high{
+    background-color: purple !important;
   }

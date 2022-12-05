@@ -8,7 +8,10 @@
 <div class="search-input">
     <!-- <label for="">Search here: </label> -->
     <input [(ngModel)]="searchText" type="search" placeholder="Search book text here" (input)="countMatches(searchText)" />
-    <p *ngIf="appearCount">{{count}} match results<p>
+    <p *ngIf="appearCount">{{i}}/{{count}} match results<p>
+<!-- <button (click)="scrollToNext()" [disabled]="appearNext === false">next</button> -->
+<button (click)="scrollToNext()" *ngIf="appearNext === true">next</button>
+<button (click)="scrollToPrevious()" *ngIf="appearNext === true">previous</button>
 
 </div>
 <!-- <div
@@ -18,7 +21,7 @@
 <div class="text-container" >
     <h1 *ngIf="isError === true"> {{errorMessage}}</h1>
 
-    <h1>{{bookData.title}}</h1>
+    <h1>{{bookData["title"]}}</h1>
     <div *ngFor="let i of raw" >
         <div [innerHtml]="i | highlight: searchText" class="book">{{i}}</div>
     </div>
