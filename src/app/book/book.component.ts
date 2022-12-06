@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
-import { ThrowStmt } from '@angular/compiler';
-import { of } from 'rxjs';
-// import { IBook } from '../book.model'
-// import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-book',
@@ -13,11 +9,11 @@ import { of } from 'rxjs';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
-  i=0;
+  i = 0;
   bookData: any;
   isError = true;
   errorMessage = "";
-  raw: any;
+  bookText: any;
   elem = document.getElementsByTagName("mark");
 
 
@@ -28,7 +24,6 @@ export class BookComponent implements OnInit {
   textURL!: string;
 
   appearNext = false
-  endNext = false;
 
 
   // book: IBook | undefined
@@ -42,7 +37,7 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+  
     this.getBook()
 
 
@@ -61,8 +56,8 @@ export class BookComponent implements OnInit {
         }
         this.bookService.getText(this.textURL)
           .subscribe((textdata) => {
-            this.raw = textdata;
-            this.raw = this.raw.split("\r\n\r\n");
+            this.bookText = textdata;
+            this.bookText = this.bookText.split("\r\n\r\n");
           })
       },
         (error) => {
@@ -132,9 +127,13 @@ export class BookComponent implements OnInit {
 
   }
   countMatches(searchText: string) {
+    
+    // at start count and buttons should not appear
     this.appearCount = true
     this.appearNext = true
     this.count = 0
+    // console.log(this.elem.length)
+    this.i = 0
     if (searchText === "") {
 
       this.count = 0
@@ -143,73 +142,92 @@ export class BookComponent implements OnInit {
 
     }
     else {
-      if (this.elem.length > 0){
-        this.elem[0].scrollIntoView();
-        // this.elem[0].style.backgroundColor= "saddlebrown";
-
+      // if (this.elem.length === 0){
+      //   // console.log(this.elem.length)
+      //   this.i = -1
+      //   this.appearNext = false
+      // }else{
+      //   this.elem[0].scrollIntoView();
   
-      }
-      for (let i of this.raw) {
-        if (i.indexOf(searchText) != -1) {
-          this.count = this.count + 1
-        }
+      // }
+  
+// console.log(this.appearNext)
+
+// console.log(this.bookText.join())
+  
+      // for (let element of this.raw) {
+        
+      //   if (element.indexOf(searchText) != -1) {
+          const re = new RegExp(searchText, 'gi');
+
+          // matching the pattern
+          const co = this.bookText.join().match(re).length;
+  
+          this.count = this.count + co
+
+        //   console.log("index:",this.bookText.join().indexOf(searchText))
+        //   console.log("count:",this.count)
+        // // }
+        // this.elem[0].scrollIntoView();
+       
+      // }
+      if (this.count === 0){
+        this.i = -1
+        this.appearNext= false
       }
     }
 
   }
-  scrollToNext(){
+
+  scrollToNext() {
     console.log(this.i)
+      if (this.elem.length === 1 ) {
+        this.appearNext = false
+        this.i = 0
+        this.elem[0].scrollIntoView();
 
-      // var elem = document.getElementsByTagName("mark");
-      // if (searchText === "") {
-      //   this.elem = 
-
-      // }
-      // this.elem[this.i].style.backgroundColor= "yellow";
-
-      // console.log(this.elem[this.i].style.backgroundColor)
-
-        if (this.i < this.elem.length - 1){
-          // document.getElementById("p2").style.color = "blue";
-
-          // this.elem[this.i].style.backgroundColor= "saddlebrown";
+    
+      }
+      else{
+        if (this.i < this.elem.length - 1) {
+          this.i = this.i + 1
+    
+          this.elem[this.i].style.backgroundColor = "saddlebrown";
+          this.elem[this.i - 1].style.backgroundColor = "yellow";
           this.elem[this.i].scrollIntoView();
-  
-          this.i = this.i+1
+    
         }
-        else if (this.i === this.elem.length - 1){
-          this.elem[this.i].scrollIntoView();
-          this.i = 0 
-
-        }
-  
-        else{
+        else if (this.i === this.elem.length - 1) {
           this.i = 0
-          // this.elem[0].scrollIntoView();
-
+          this.elem[this.i].scrollIntoView();
+          this.elem[this.i].style.backgroundColor = "saddlebrown";
+          this.elem[this.i - 1].style.backgroundColor = "yellow";
+    
+    
+    
         }
+    
+      }
   }
-  scrollToPrevious(){
+
+
+  scrollToPrevious() {
     console.log(this.i)
-    if (this.i > 0){
-      // document.getElementById("p2").style.color = "blue";
+    if (this.i > 0 && this.i < this.elem.length) {
 
       // this.elem[this.i].style.backgroundColor= "saddlebrown";
+      this.i = this.i - 1
       this.elem[this.i].scrollIntoView();
-      this.i = this.i-1
-
-
+      this.elem[this.i].style.backgroundColor = "saddlebrown";
+      this.elem[this.i + 1].style.backgroundColor = "yellow";
     }
-    // else if( this.i === 0){
-    //   this.elem[this.i].scrollIntoView();
-
-    // }
-    else{
+    else if (this.i === 0) {
       this.i = this.elem.length - 1
-      // this.elem[0].scrollIntoView();
+
+      this.elem[this.i].scrollIntoView();
+
 
     }
-
 
   }
 
