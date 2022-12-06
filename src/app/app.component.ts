@@ -8,6 +8,7 @@ import { BookService } from './book.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title: any;
 
   ngOnInit(){
   }
