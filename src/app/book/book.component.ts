@@ -387,7 +387,7 @@ validateEachPage(paginationPage : number,content:any,length:any) {
   }
 
   gotoPage(p:number){
-    document.getElementById("1")?.scrollIntoView()
+    document.getElementById(`page${p}`)?.scrollIntoView()
   }
 
 
