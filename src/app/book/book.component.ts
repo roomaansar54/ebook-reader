@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
+import * as $ from 'jquery';
+// declare var $: any;  
 
 @Component({
   selector: 'app-book',
@@ -9,14 +11,101 @@ import { BookService } from '../book.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  searchPage:number = 1;
   i = 0;
   bookData: any;
   isError = true;
   errorMessage = "";
   bookText: any;
   elem = document.getElementsByTagName("mark");
-
-
+  paginationPage_span:any;
+ currentPage = 1;
+  CountPerEachPage = 2;
+  previousPage:any;
+  nextPage:any;
+//   //json object mapping for content
+//   paginationObject = [
+//   {
+//   content : "Hi,"
+//   },
+//   {
+//   content : "Hello...."
+//   },
+//   {
+//   content : "I"
+//   },
+//   {
+//   content : "Amardeep."
+//   },
+//   {
+//   content : "My"
+//   },
+//   {
+//   content : "Best"
+//   },
+//   {
+//   content : "Friend"
+//   },
+//   {
+//   content : "is"
+//   },
+//   {
+//   content : "Paramesh"
+//   },
+//   {
+//   content : "Nathi"
+//   },
+//   {
+//   content : ".........."
+//   },];
+  showMyTable: any;
+  booklength: any;
+//   //function for go to previous page
+  getPereviousPage(length:number,content:any) {
+  if (this.currentPage > 1) {
+  this.currentPage--;
+  this.validateEachPage(this.currentPage,content,length)
+}
+  }
+  //function for go to next page
+  getNextPage(length:number,content:any) {
+  if (this.currentPage < length) {
+  this.currentPage++;
+  this.validateEachPage(this.currentPage,content,length)
+}
+  }
+//   //function for validating real time condition like if move to last page, last page disabled etc
+validateEachPage(paginationPage : number,content:any,length:any) {
+  this.nextPage = document.getElementById("nextPage");
+  this.previousPage = document.getElementById("previousPage");
+  this.showMyTable = document.getElementById("showTable");
+  this.paginationPage_span = document.getElementById("paginationPage");
+  //validating pages based on page count
+  if (paginationPage < 1)
+  paginationPage = 1;
+  if (paginationPage >length)
+  paginationPage = length;
+  this.showMyTable.innerHTML = "";
+  for (var i = (paginationPage - 1) * this.CountPerEachPage; i < (paginationPage * this.CountPerEachPage); i++) {
+  this.showMyTable.innerHTML += content[i] + "<br>";
+  }
+  this.paginationPage_span.innerHTML = paginationPage;
+  if (paginationPage == 1) {
+  this.previousPage.style.visibility = "hidden";
+  } else {
+  this.previousPage.style.visibility = "visible";
+  }
+  if (paginationPage == length) {
+  this.nextPage.style.visibility = "hidden";
+  } else {
+  this.nextPage.style.visibility = "visible";
+  }
+  }
+  // //function per number of Pages
+  // numberOfPages() {
+  // return Math.ceil(this.paginationObject.length / this.CountPerEachPage);
+  // }
+  
 
   appearCount = false;
   searchText = '';
@@ -25,6 +114,12 @@ export class BookComponent implements OnInit {
 
   appearNext = false
 
+  $doc:any;
+  pageHeight :any;
+ 
+  cou :any;
+   $li :any;;
+ 
 
   // book: IBook | undefined
 
@@ -36,9 +131,65 @@ export class BookComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.validateEachPage(1);
 
+    this.getBook();
+
+    // this.$doc = $('#doc *');
+    // var pageHeight = 700;
+    
+    // this.cou = 0
+    
+    // while (this.$doc.length && ++this.cou < 100) {
+    
+    //   this.$li = $('<li>');
+    //   $('ul').append(this.$li);
+    
+    //   var min = 0;
+    //   var max = this.$doc.length;
+    //   var mid;
+    
+    //   console.log('new search');
+    //   console.log(min, max);
+    //   console.log("mid",mid)
+
+    
+    //   while ((max - min) > 5) {
+    
+    //     console.log(min, max);
+    
+    //     this.$li.empty();
+    //     mid = Math.floor((max + min) / 2);
+    //     this.$li.append(this.$doc.slice(0, mid + 1));
+    
+    //     if (this.$li.height() > pageHeight) {
+    //       max = mid
+    //     } else {
+    //       min = mid;
+    //     }
+    //   }
+    
+    //   this.$li.css('height', pageHeight);
+    //   this.$doc.splice(0, min + 1);
+    // }
+    
+    
+  // var i = document.getElementsByTagName("li")
+
+  // for (let d in i){
+  //   // i[d].classList.add("li");
+  //   i[d].style.backgroundColor="blue"
+  //   i[d].style.border="1px solid black"
+  //   // i[d].style.border="1px solid black"
+  //   i[d].style.display = "inline-block"
+  //   i[d].style.width = "450px"
+  //   i[d].style.verticalAlign="top"
+  //   i[d].style.margin="5px"
+  //   i[d].style.listStyleType="none"
+  //   i[d].style.listStyleType="none"
+  //   i[d].style.padding="20px"
+  // }
   
-    this.getBook()
 
 
   }
@@ -58,6 +209,11 @@ export class BookComponent implements OnInit {
           .subscribe((textdata) => {
             this.bookText = textdata;
             this.bookText = this.bookText.split("\r\n\r\n");
+            console.log(this.bookText)
+            this.booklength= Math.ceil(this.bookText.length / this.CountPerEachPage);
+            console.log("book length",this.booklength)
+            this.validateEachPage(this.currentPage,this.bookText,this.booklength)
+
           })
       },
         (error) => {
@@ -202,9 +358,7 @@ export class BookComponent implements OnInit {
           this.elem[this.i].scrollIntoView();
           this.elem[this.i].style.backgroundColor = "saddlebrown";
           this.elem[this.i - 1].style.backgroundColor = "yellow";
-    
-    
-    
+
         }
     
       }
@@ -229,7 +383,13 @@ export class BookComponent implements OnInit {
 
     }
 
+
   }
+
+  gotoPage(p:number){
+    document.getElementById("1")?.scrollIntoView()
+  }
+
 
 
 }

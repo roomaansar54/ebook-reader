@@ -5,23 +5,41 @@
         <button class="large" (click)="largeFont()">Aa</button>
         <button class="largest" (click)="largestFont()">Aa</button>
     </div>
-    
+
     <div class="search-input">
         <input [(ngModel)]="searchText" type="search" placeholder="Search book text here"
             (input)="countMatches(searchText)" />
         <p *ngIf="appearCount">{{i+1}}/{{count}} match
         <p>
-            <button (click)="scrollToPrevious()" [disabled]="appearNext === false" style="margin-left: 10px;">prev</button>
-            <button (click)="scrollToNext()" [disabled]="appearNext === false" >next</button>
+            <button (click)="scrollToPrevious()" [disabled]="appearNext === false"
+                style="margin-left: 10px;">prev</button>
+            <button (click)="scrollToNext()" [disabled]="appearNext === false">next</button>
     </div>
-    
-</div>
 
-<div class="text-container">
+</div>
+<div class="text-container" >
     <h1 *ngIf="isError === true"> {{errorMessage}}</h1>
 
     <h1>{{bookData["title"]}}</h1>
     <div *ngFor="let text of bookText">
-        <div [innerHtml]="text | highlight: searchText" class="book">{{i}}</div>
+        <div class="book">
+            <div [innerHtml]="text | highlight: searchText" >{{i}}</div>
+            <div id="1">{{bookText.indexOf(text)+1}}</div>
+    
+        </div>
     </div>
 </div>
+
+<h2>Pagination Introduction Content</h2>
+<h3>Content for Pagination in each Page</h3>
+<div id="showTable"></div>
+<!-- <div class="a"> -->
+<button (click)="getPereviousPage(this.booklength,this.bookText)" id="previousPage">Previous
+Page</button> 
+<button (click)="getNextPage(this.booklength,this.bookText)" id="nextPage">Next Page</button>
+Page Number: <span id="paginationPage"></span>
+
+
+
+<!-- </div> -->
+
