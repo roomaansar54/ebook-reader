@@ -151,6 +151,16 @@ img {
       grid-template-columns: repeat(2, 150px);
     }
   }
+  @media (max-width: 500px) {
+    .book-grid {
+      grid-template-columns: repeat(1, 150px);
+      margin: auto;
+    }
+    .search{
+      width: 100% !important;
+
+    }
+  }
 
   /* color option */
   

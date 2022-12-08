@@ -57,7 +57,9 @@ export class BookSearchComponent implements OnInit {
       })
     }
     downloadLink(id:number){
-      window.open("https://www.gutenberg.org/files/"+id+"/"+id+"-0.zip", "_blank");
+      // window.open("https://www.gutenberg.org/files/"+id+"/"+id+"-0.zip", "_blank");
+      window.open("https://www.gutenberg.org/files/"+id+"/"+id+"-0.zip");
+
   }
 
     

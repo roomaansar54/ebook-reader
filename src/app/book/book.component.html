@@ -6,42 +6,51 @@
         <button class="largest" (click)="largestFont()">Aa</button>
     </div>
 
+    <button (click)="changeDisplay()" class="showpre">Change Text Display</button>
+
+
     <div class="search-input">
         <input [(ngModel)]="searchText" type="search" placeholder="Search book text here"
             (input)="countMatches(searchText)" />
         <p *ngIf="appearCount">{{i+1}}/{{count}} match
-        <p>
-            <button (click)="scrollToPrevious()" [disabled]="appearNext === false"
-                style="margin-left: 10px;">prev</button>
-            <button (click)="scrollToNext()" [disabled]="appearNext === false">next</button>
+        </p>
+        <button (click)="scrollToPrevious()" [disabled]="appearNext === false" style="margin-left: 10px;">prev</button>
+        <button (click)="scrollToNext()" [disabled]="appearNext === false">next</button>
     </div>
 
 </div>
-<input (ngModel)="searchPage"/>
-<button (click)="gotoPage(searchPage)"></button>
-<div class="text-container" >
+<!-- <input (ngModel)="searchPage"/>
+<button (click)="gotoPage(searchPage)"></button> -->
+<div class="text-container" *ngIf="showPre === false">
     <h1 *ngIf="isError === true"> {{errorMessage}}</h1>
 
     <h1>{{bookData["title"]}}</h1>
-    <div *ngFor="let text of bookText">
+    <div *ngFor="let text of bookContinuousData">
         <div class="book">
-            <div [innerHtml]="text | highlight: searchText" >{{i}}</div>
-            <div id="page">{{bookText.indexOf(text)+1}}/ {{bookText.length}}</div>
+            <div [innerHtml]="text | highlight: searchText">
+                {{i}}
+            </div>
+            <!-- <div class="page" >{{bookText.indexOf(text)+1}}</div>
+
+            <div class="page" >{{bookText.indexOf(text)+1}}/ {{bookText.length}}</div> -->
         </div>
     </div>
 </div>
+<div class="book-pre" *ngIf="showPre === true">
+    <h1>{{bookData["title"]}}</h1>
+    <pre [innerHtml]="bookText | highlight: searchText"></pre>
+</div>
 
-<h2>Pagination Introduction Content</h2>
+<!-- <h2>Pagination Introduction Content</h2>
 <h3>Content for Pagination in each Page</h3>
-<div id="showTable"></div>
+<div id="showTable"></div> -->
 <!-- <div class="a"> -->
-<button (click)="getPereviousPage(this.booklength,this.bookText)" id="previousPage">Previous
+<!-- <button (click)="getPereviousPage(this.booklength,this.bookText)" id="previousPage">Previous
 Page</button> 
 <button (click)="getNextPage(this.booklength,this.bookText)" id="nextPage">Next Page</button>
-Page Number: <span id="paginationPage"></span>
+Page Number: <span id="paginationPage"></span> -->
 
 
-<textarea> </textarea>
+<!-- <textarea> </textarea> -->
 
 <!-- </div> -->
-

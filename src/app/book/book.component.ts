@@ -11,6 +11,8 @@ import * as $ from 'jquery';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  bookContinuousData:any;
+  showPre = false;
   searchPage:number = 1;
   i = 0;
   bookData: any;
@@ -61,46 +63,46 @@ export class BookComponent implements OnInit {
   showMyTable: any;
   booklength: any;
 //   //function for go to previous page
-  getPereviousPage(length:number,content:any) {
-  if (this.currentPage > 1) {
-  this.currentPage--;
-  this.validateEachPage(this.currentPage,content,length)
-}
-  }
-  //function for go to next page
-  getNextPage(length:number,content:any) {
-  if (this.currentPage < length) {
-  this.currentPage++;
-  this.validateEachPage(this.currentPage,content,length)
-}
-  }
+//   getPereviousPage(length:number,content:any) {
+//   if (this.currentPage > 1) {
+//   this.currentPage--;
+//   this.validateEachPage(this.currentPage,content,length)
+// }
+//   }
+//   //function for go to next page
+//   getNextPage(length:number,content:any) {
+//   if (this.currentPage < length) {
+//   this.currentPage++;
+//   this.validateEachPage(this.currentPage,content,length)
+// }
+//   }
 //   //function for validating real time condition like if move to last page, last page disabled etc
-validateEachPage(paginationPage : number,content:any,length:any) {
-  this.nextPage = document.getElementById("nextPage");
-  this.previousPage = document.getElementById("previousPage");
-  this.showMyTable = document.getElementById("showTable");
-  this.paginationPage_span = document.getElementById("paginationPage");
+// validateEachPage(paginationPage : number,content:any,length:any) {
+//   this.nextPage = document.getElementById("nextPage");
+//   this.previousPage = document.getElementById("previousPage");
+//   this.showMyTable = document.getElementById("showTable");
+//   this.paginationPage_span = document.getElementById("paginationPage");
   //validating pages based on page count
-  if (paginationPage < 1)
-  paginationPage = 1;
-  if (paginationPage >length)
-  paginationPage = length;
-  this.showMyTable.innerHTML = "";
-  for (var i = (paginationPage - 1) * this.CountPerEachPage; i < (paginationPage * this.CountPerEachPage); i++) {
-  this.showMyTable.innerHTML += content[i] + "<br>";
-  }
-  this.paginationPage_span.innerHTML = paginationPage;
-  if (paginationPage == 1) {
-  this.previousPage.style.visibility = "hidden";
-  } else {
-  this.previousPage.style.visibility = "visible";
-  }
-  if (paginationPage == length) {
-  this.nextPage.style.visibility = "hidden";
-  } else {
-  this.nextPage.style.visibility = "visible";
-  }
-  }
+  // if (paginationPage < 1)
+  // paginationPage = 1;
+  // if (paginationPage >length)
+  // paginationPage = length;
+  // this.showMyTable.innerHTML = "";
+  // for (var i = (paginationPage - 1) * this.CountPerEachPage; i < (paginationPage * this.CountPerEachPage); i++) {
+  // this.showMyTable.innerHTML += content[i] + "<br>";
+  // }
+  // this.paginationPage_span.innerHTML = paginationPage;
+  // if (paginationPage == 1) {
+  // this.previousPage.style.visibility = "hidden";
+  // } else {
+  // this.previousPage.style.visibility = "visible";
+  // }
+  // if (paginationPage == length) {
+  // this.nextPage.style.visibility = "hidden";
+  // } else {
+  // this.nextPage.style.visibility = "visible";
+  // }
+  // }
   // //function per number of Pages
   // numberOfPages() {
   // return Math.ceil(this.paginationObject.length / this.CountPerEachPage);
@@ -118,7 +120,10 @@ validateEachPage(paginationPage : number,content:any,length:any) {
   pageHeight :any;
  
   cou :any;
-   $li :any;;
+   $li :any;
+   indexArray:any;
+  co: any;
+;
  
 
   // book: IBook | undefined
@@ -202,19 +207,48 @@ validateEachPage(paginationPage : number,content:any,length:any) {
         if ("text/plain; charset=us-ascii" in this.bookData["formats"]) {
           this.textURL = this.bookData["formats"]["text/plain; charset=us-ascii"].split('org')[1]
         }
-        else if ("text/plain; charset=charset=utf-8" in this.bookData["formats"]) {
-          this.textURL = this.bookData["formats"]["text/plain; charset=charset=utf-8"]
+        else if ("text/plain; charset=utf-8" in this.bookData["formats"]) {
+          this.textURL = this.bookData["formats"]["text/plain; charset=utf-8"].split('org')[1]
+        }
+        else if("text/plain; charset=iso-8859-1" in this.bookData["formats"]){
+          this.textURL = this.bookData["formats"]["text/plain; charset=iso-8859-1"].split('org')[1]
+
+
         }
         this.bookService.getText(this.textURL)
           .subscribe((textdata) => {
             this.bookText = textdata;
-            this.bookText = this.bookText.split("\r\n\r\n");
+            this.bookContinuousData = this.bookText.split("\r\n\r\n");
+            // this.bookText = this.bookText.split("\r\n\r\n");
+            // const array = [2, 5, 9];
+
+            // console.log(array);
+            
+            // const index = array.indexOf(5);
+            // if (index > -1) { // only splice array when item is found
+            //   array.splice(index, 1); // 2nd parameter means remove one item only
+            // }
+            
+            // // array = [2, 9]
+            // console.log(array); 
+            this.indexArray=[]
+            
             console.log(this.bookText)
+            // for (let i of this.bookText){
+            //   if (i === ""){
+            //      var index = this.bookText.indexOf(i);
+            //     //  this.indexArray.append(index)
+            //      this.bookText.splice(index, 1)
+
+            //   }
+            // }
             this.booklength= Math.ceil(this.bookText.length / this.CountPerEachPage);
-            console.log("book length",this.booklength)
-            this.validateEachPage(this.currentPage,this.bookText,this.booklength)
+            console.log("book length",this.bookText.length)
+            // this.validateEachPage(this.currentPage,this.bookText,this.booklength)
+            console.log(this.bookText)
 
           })
+
       },
         (error) => {
           this.isError = true
@@ -282,6 +316,8 @@ validateEachPage(paginationPage : number,content:any,length:any) {
     }
 
   }
+
+  // need this function becuse using elem.length gives ng error thtat value updated after checking
   countMatches(searchText: string) {
     
     // at start count and buttons should not appear
@@ -317,9 +353,15 @@ validateEachPage(paginationPage : number,content:any,length:any) {
           const re = new RegExp(searchText, 'gi');
 
           // matching the pattern
-          const co = this.bookText.join().match(re).length;
+          if (this.showPre === true){
+            this.co = this.bookText.match(re).length;
+
+          }
+          else{
+            this.co = this.bookContinuousData.join().match(re).length;
+          }
   
-          this.count = this.count + co
+          this.count = this.count + this.co
 
         //   console.log("index:",this.bookText.join().indexOf(searchText))
         //   console.log("count:",this.count)
@@ -389,7 +431,11 @@ validateEachPage(paginationPage : number,content:any,length:any) {
   gotoPage(p:number){
     document.getElementById(`page${p}`)?.scrollIntoView()
   }
+  changeDisplay(){
+    this.showPre =! this.showPre
+    console.log(this.showPre)
 
+  }
 
 
 }
