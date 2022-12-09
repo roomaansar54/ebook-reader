@@ -1,12 +1,29 @@
 <div class="features">
 
     <div class="font-buttons">
-        <button class="normal inline-display" (click)="normalFont()">Aa</button>
-        <button class="large" (click)="largeFont()">Aa</button>
-        <button class="largest" (click)="largestFont()">Aa</button>
+        <button class="normal inline-display" (click)="normalFont()" matTooltip="Normal Font">Aa</button>
+        <button class="large" (click)="largeFont()" matTooltip="Large Font">Aa</button>
+        <button class="largest" (click)="largestFont()" matTooltip="Largest Font">Aa</button>
     </div>
+    <!-- <span class="material-symbols-outlined">
+        format_line_spacing
+    </span> -->
+    <div class="spacing-buttons">
+        <button class="narrow-spacing" (click)="narrowSpacing()" matTooltip="Decrease Line Spacing"> 
+            <img src="assets/line-spacing-2.png" width="35px" height="35px">
+        </button>
+        <button class="normal-spacing" (click)="normalSpacing()" matTooltip="Normal Line Spacing"> 
+            <img src="assets/line-spacing-2.png" width="40px" height="40px">
+        </button>
 
-    <button (click)="changeDisplay()" class="showpre">Change Text Display</button>
+        <button class="broader-spacing" (click)="broaderSpacing()" matTooltip="Increase Line Spacing"> 
+            <img src="assets/line-spacing.png" width="40px" height="40px">
+        </button>
+    </div>
+    
+    <button class="showpre" (click)="changeDisplay()" matTooltip="Change Text Display"> 
+        <img src="assets/wrap-text.png" width="40px" height="40px">
+    </button>
 
 
     <div class="search-input">
@@ -38,7 +55,7 @@
 </div>
 <div class="book-pre" *ngIf="showPre === true">
     <h1>{{bookData["title"]}}</h1>
-    <pre [innerHtml]="bookText | highlight: searchText"></pre>
+    <pre [innerHtml]="bookText | highlight: searchText" class="pre"></pre>
 </div>
 
 <!-- <h2>Pagination Introduction Content</h2>

@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { HighlightPipe } from './highlight.pipe';
 // import { AngularEpubViewerModule } from 'angular-epub-viewer';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HighlightPipe } from './highlight.pipe';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
+    MatTooltipModule
     
     
   ],

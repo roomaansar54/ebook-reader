@@ -8,20 +8,21 @@
 .normalFont{
     font-size: 23px !important;
 }
+
 .showpre{
   cursor: pointer;
   display: inline-block;
   width: 90px;
   color: #826520;
-  border: 1px solid #826520;
+  border: none;
   background-color: transparent;
-  border-radius: 10px;
-  margin: auto;
+  /* border-radius: 10px; */
+  margin: auto 20px;
 }
-.showpre:hover{
+/* .showpre:hover{
   background-color: #826520;
   color: white;
-}
+} */
 .book-pre{
   background-color: transparent;
   /* width: 60%; */
@@ -29,9 +30,9 @@
   overflow: auto;
   box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
   margin: auto;
-  height: 500px;
+  height: 60%;
   padding: 50px;
-  width: 70%;
+  width: 80%;
   background: url("https://i.imgur.com/0kjMcUe.png");
   background-color: #8a6b25;
   filter: brightness(0.95) sepia(40%) saturate(80%);
@@ -44,12 +45,12 @@
 pre{
   font-size: 23px !important;
   color: #826520;
-  line-height:45px ;
+  line-height:27px ;
   font-family: 'Josefin Slab', serif;
 }
 
 .book{
-line-height: 45px;
+line-height: 27px;
 /* border: 3px solid red; */
 /* margin-top: 30px; */
 /* height: 700px */
@@ -70,23 +71,18 @@ line-height: 45px;
 .features{
   display: flex;
   width: 80%;
-  margin-top: 10px ;
-  margin-bottom: 10px;
-  margin-left: auto;
-  justify-content: space-between;
+  margin:10px auto;
+  justify-content:center;
   
 }
 .search-input{
     display: flex;
-
-    margin: auto;
+    /* margin: auto; */
     justify-content: center;
     width: 40%;
     border: 2px solid #a1833b;
     border-radius: 30px;
     margin-bottom: 20px;
-
-
 }
 input {
     padding: 20px;
@@ -119,6 +115,7 @@ input {
   
 
   }
+
   .search-input button:hover{
     background-color: #826520;
     color: white;
@@ -190,6 +187,7 @@ input {
 }
 .font-buttons{
     text-align: center;
+    margin: auto 0;
 }
 .largest , .normal , .large{
     color: black;
@@ -207,6 +205,33 @@ input {
     font-size: 30px !important;
 
 }
+.spacing-buttons{
+  text-align: center;
+  margin:auto 30px;
+}
+
+.broader-spacing, .normal-spacing, .narrow-spacing{
+  color: black;
+  border: none;
+  background-color: transparent;
+  /* font-size: 40px; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+.add-narrow-space{
+  line-height: 25px;
+
+}
+.add-normal-space{
+  line-height: 30px;
+}
+
+.add-broader-space{
+  line-height: 45px;
+}
+
+
 
 ::-webkit-scrollbar {
 	width: 20px;
@@ -251,17 +276,18 @@ input {
     }
     .showpre{
       margin-bottom: 10px;
+      margin: 4px auto;
     }
     .search-input{
         width: 100%;
     }
     .text-container{
         width: 70%;
-        height: 60%;
+        height: 45%;
     }
     .book-pre{
       width:70%;
-      height:60%
+      height:45%
     }
   }
 

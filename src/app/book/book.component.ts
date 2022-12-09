@@ -11,6 +11,7 @@ import * as $ from 'jquery';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  box:any;
   bookContinuousData:any;
   showPre = false;
   searchPage:number = 1;
@@ -233,7 +234,7 @@ export class BookComponent implements OnInit {
             // console.log(array); 
             this.indexArray=[]
             
-            console.log(this.bookText)
+            // console.log(this.bookText)
             // for (let i of this.bookText){
             //   if (i === ""){
             //      var index = this.bookText.indexOf(i);
@@ -245,7 +246,7 @@ export class BookComponent implements OnInit {
             this.booklength= Math.ceil(this.bookText.length / this.CountPerEachPage);
             console.log("book length",this.bookText.length)
             // this.validateEachPage(this.currentPage,this.bookText,this.booklength)
-            console.log(this.bookText)
+            // console.log(this.bookText)
 
           })
 
@@ -266,56 +267,106 @@ export class BookComponent implements OnInit {
 
   }
   largestFont() {
-    var box = document.getElementsByClassName("book")
-    if (box != null) {
-      for (var i = 0; i < box.length; i++) {
-        if (box[i].classList.contains('largeFont')) {
-          box[i].classList.remove('largeFont')
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('largeFont')) {
+          this.box[i].classList.remove('largeFont')
         }
-        if (box[i].classList.contains('normalFont')) {
-          box[i].classList.remove('normalFont')
+        if (this.box[i].classList.contains('normalFont')) {
+          this.box[i].classList.remove('normalFont')
         }
 
 
-        box[i].classList.add('largestFont');
-        console.log(box[i].className);
+        this.box[i].classList.add('largestFont');
+        // console.log(this.box[i].className);
       }
     }
 
 
   }
   normalFont() {
-    var box = document.getElementsByClassName("book")
-    if (box != null) {
-      for (var i = 0; i < box.length; i++) {
-        if (box[i].classList.contains('largeFont')) {
-          box[i].classList.remove('largeFont')
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('largeFont')) {
+          this.box[i].classList.remove('largeFont')
         }
-        if (box[i].classList.contains('largestFont')) {
-          box[i].classList.remove('largestFont')
+        if (this.box[i].classList.contains('largestFont')) {
+          this.box[i].classList.remove('largestFont')
         }
 
-        box[i].classList.add('normalFont');
-        console.log(box[i].className);
+        this.box[i].classList.add('normalFont');
+        // console.log(this.box[i].className);
       }
     }
   }
   largeFont() {
-    var box = document.getElementsByClassName("book")
-    if (box != null) {
-      for (var i = 0; i < box.length; i++) {
-        if (box[i].classList.contains('largestFont')) {
-          box[i].classList.remove('largestFont')
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('largestFont')) {
+          this.box[i].classList.remove('largestFont')
         }
-        if (box[i].classList.contains('normalFont')) {
-          box[i].classList.remove('normalFont')
+        if (this.box[i].classList.contains('normalFont')) {
+          this.box[i].classList.remove('normalFont')
         }
-        box[i].classList.add('largeFont');
-        console.log(box[i].className);
+        this.box[i].classList.add('largeFont');
+        // console.log(this.box[i].className);
       }
     }
 
   }
+  normalSpacing(){
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('add-broader-space')) {
+          this.box[i].classList.remove('add-broader-space')
+        }
+        if (this.box[i].classList.contains('add-narrow-space')) {
+          this.box[i].classList.remove('add-narrow-space')
+        }
+        this.box[i].classList.add('add-normal-space');
+        // console.log(this.box[i].className);
+      }
+    }
+
+  }
+  narrowSpacing(){
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('add-normal-space')) {
+          this.box[i].classList.remove('add-normal-space')
+        }
+        if (this.box[i].classList.contains('add-broader-space')) {
+          this.box[i].classList.remove('add-broader-space')
+        }
+        this.box[i].classList.add('add-narrow-space');
+        // console.log(this.box[i].className);
+      }
+    }
+
+
+  }
+  broaderSpacing(){
+    this.box = this.showPre === true? document.getElementsByClassName("pre"): document.getElementsByClassName("book");
+    if (this.box != null) {
+      for (var i = 0; i < this.box.length; i++) {
+        if (this.box[i].classList.contains('add-normal-space')) {
+          this.box[i].classList.remove('add-normal-space')
+        }
+        if (this.box[i].classList.contains('add-narrow-space')) {
+          this.box[i].classList.remove('add-narrow-space')
+        }
+        this.box[i].classList.add('add-broader-space');
+        // console.log(this.box[i].className);
+      }
+    }
+
+  }
+
 
   // need this function becuse using elem.length gives ng error thtat value updated after checking
   countMatches(searchText: string) {
